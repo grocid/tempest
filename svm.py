@@ -28,6 +28,4 @@ f_t = open('recorded_keystrokes_target.txt', 'r')
 data = get_data(f_d)
 target = get_data(f_t)
 
-print svc.predict(data)
-
-print np.reshape(target,-1) 
+print 1.0*np.sum(svc.predict(data) == np.reshape(target,-1))/len(data)
