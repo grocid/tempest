@@ -96,7 +96,8 @@ def visualize(device):
             c = screen.getch()
             if c != -1:
                 screen.addstr(0, 0, str(c) + ' ')
-                f = open('recored_keystrokes.txt', 'a')
+                f_d = open('recorded_keystrokes_data.txt', 'a')
+                f_t = open('recorded_keystrokes_target.txt', 'a')
                 catch_data = True
             
             # handle terminal resizing
@@ -118,8 +119,9 @@ def visualize(device):
             levels = get_coeffs(data, chunk, sample_rate, bins)
             
             if catch_data:
-                data = str(c) + ', ' + ', '.join([x.astype('str') for x in levels])
-                f.write(data)
+                data = ', '.join([x.astype('str') for x in levels])
+                f_d.write(data + '\n')
+                f_t.write(str(c) + '\n')
  
             for i in range(bins):
                 height = max(min((levels[i]*1.0)/scale, 1.0), 0.0)
