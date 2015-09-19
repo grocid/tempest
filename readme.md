@@ -1,9 +1,11 @@
-## Acoustic attack on keyboards
+# Acoustic attack on keyboards
 
-# Usage
+### Usage
 
-1. Run 'tempest.py' and record a training set. It has to be 'sufficiently' large to be able to classify keystrokes.
+1. Run `tempest.py -train` and record a training set. It has to be quite large to be able to classify keystrokes. For a good result: 
+	-- Push each key several times.
+	-- Do not push the keys too frequently.
 
-2. Rename the files 'recorded_keystrokes_data.txt' and 'recorded_keystrokes_target.txt' to 'recorded_keystrokes_data.train' and 'recorded_keystrokes_target.train', respectively. 
+2. Run `tempest.py` and record a test set.
 
-3. Now run 'tempest.py' again to generate a test set. When ready, run svm.py.
+3. To start the support vector machine classifer and get the results, run `svm.py`.
