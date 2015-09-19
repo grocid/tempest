@@ -8,9 +8,14 @@ import math
 import struct
 import time
 import curses
+import sys
 from socket import *
 
 p = pyaudio.PyAudio()
+
+# filenames
+save_file_data = 'recorded_keystrokes_data.txt'
+save_file_target = 'recorded_keystrokes_target.txt'
 
 def find_input_device():
     device_index = None            
@@ -96,8 +101,8 @@ def visualize(device):
             c = screen.getch()
             if c != -1:
                 screen.addstr(0, 0, str(c) + ' ')
-                f_d = open('recorded_keystrokes_data.txt', 'a')
-                f_t = open('recorded_keystrokes_target.txt', 'a')
+                f_d = open(save_file_data, 'a')
+                f_t = open(save_file_target, 'a')
                 catch_data = True
             
             # handle terminal resizing
@@ -151,6 +156,11 @@ def visualize(device):
 
 
 def main():
+    global save_file_data, save_file_target
+    if len(sys.argv) > 1 and str(sys.argv[1]) == '-train':
+        save_file_data = 'train_' + save_file_data
+        save_file_target = 'train_' + save_file_target
+
     visualize(find_input_device())
 
 if __name__ == '__main__':
