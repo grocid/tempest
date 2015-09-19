@@ -11,4 +11,4 @@
 3. To start the support vector machine classifer and get the results, run `svm.py`.
 
 
-Based on the code [here][http://julip.co/2012/05/arduino-python-soundlight-spectrum/].
+Based on the code [here](http://julip.co/2012/05/arduino-python-soundlight-spectrum/).
